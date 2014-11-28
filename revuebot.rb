@@ -9,7 +9,7 @@ bot = Cinch::Bot.new do
 
   on :message do |m|
     Revuelog.new(m.time, m.nick, m.message)
+  end
 end
-	end
 
 bot.start
