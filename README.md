@@ -5,8 +5,8 @@ Irc logger bot with api with sinatra.
 
 ### To Do (with TDD)
 
-* [ ] Log with cinch
-* [ ] Choose nice db and plug it 
+* [X] Log with cinch
+* [ ] Choose nice db and plug it : Mongodb because of json direct output and because...
 * [ ] Build API with Sinatra
 * [ ] Nice front with base.io or foundation with some D3.js
 

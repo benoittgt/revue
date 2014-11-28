@@ -6,8 +6,9 @@ bot = Cinch::Bot.new do
     c.server = "irc.freenode.org"
     c.channels = ["#botwarss"]
   end
+
   on :message do |m|
-  	revuelog(m)
+    Revuelog.new(m.time, m.nick, m.message)
 end
 	end
 
