@@ -1,22 +1,13 @@
 require './spec/spec_helper'
 
-RSpec.describe "create object from irc message" do
-  before(:example) do
-    @revueobj = Revuelog.new("2014-11-28 13:58:33 +0100", "nickname", "Love TDD")
-  end
+describe "create object from irc message" do
 
   describe "checking revue object initialize" do
-    it "contain nickname" do
-      expect(@revueobj.nick).to eq("nickname")
-    end
+    let(:revueobj) { Revuelog.new("2014-11-28 13:58:33 +0100", "nickname", "Love TDD") }
 
-    it "contain timestamp" do
-      expect(@revueobj.time).to eq("2014-11-28 13:58:33 +0100")
-    end
-
-    it "contain message" do
-      expect(@revueobj.message).to eq("Love TDD")
-    end
+    it { expect(revueobj.nick).to eq("nickname") }
+    it { expect(revueobj.time).to eq("2014-11-28 13:58:33 +0100") }
+    it { expect(revueobj.message).to eq("Love TDD") }
   end
 end
 
