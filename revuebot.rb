@@ -3,8 +3,8 @@ require './revuelog'
 
 bot = Cinch::Bot.new do
   configure do |c|
-    c.server = "irc.freenode.org"
-    c.channels = ["#botwarss"]
+    c.server = 'irc.freenode.org'
+    c.channels = ['#botwarss']
   end
 
   on :message do |m|
