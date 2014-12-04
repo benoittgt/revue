@@ -6,4 +6,17 @@ class Revuelog
     @nick    = nick
     @message = message
   end
+
+  def self.dbadd(revueobj)
+   self
+  end
+
+  private
+
+  def revuedb
+    client = MongoClient.new
+    db     = client['revue-db']
+    coll   = db['revue-collection']
+  end
 end
+
