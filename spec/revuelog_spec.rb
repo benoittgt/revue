@@ -9,10 +9,10 @@ describe "create object from irc message" do
   end
 
   describe "checking hash object" do
-    it { expect(revueobj.to_hash).to eq("nickname") }
+    it { expect(revueobj.to_hash).to eq("time" => "2014-11-28 13:58:33 +0100", "nick" => "nickname", "message" => "Love TDD") }
   end
 
   describe "insert data into database" do
-    it { expect(Revuelog.dbadd(@nickname)).to eq("nickname") }
+    skip { expect(Revuelog.dbadd(@nickname)).to eq("nickname") }
   end
 end
