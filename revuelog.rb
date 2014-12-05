@@ -8,10 +8,7 @@ class Revuelog
   end
 
   def to_hash
-    revuehash = Revuelog.new(@time,@nick,@message)
-    hash = {}
-    revuehash.instance_variables.each {|var| hash[var.to_s.delete("@")] = revuehash.instance_variable_get(var) }
-    p hash
+     {"time" => @time, "nick" => @nick, "message" => @message}
   end
 end
 
