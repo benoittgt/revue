@@ -14,8 +14,4 @@ describe "create object from irc message" do
     it { expect(revueobj.to_hash["nick"]).to eq("nickname")}
     it { expect(revueobj.to_hash["message"]).to eq("Love TDD")}
   end
-
-  describe "insert data into database" do
-    skip { expect(Revuelog.dbadd(@nickname)).to eq("nickname") }
-  end
 end
