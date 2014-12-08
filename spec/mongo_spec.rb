@@ -8,9 +8,9 @@ class MongodbSpec
   attr_reader :key, :value, :revuehash
 
   def self.dbnew
-    @client = MongoClient.new
-    @db = @client['revue-db']
-    @coll = @db['revue-collection-rspec']
+    db = MongoClient.new("localhost", 27017).db("revue_db")
+    @coll = db["revue-collection-rspec"]
+    self
   end
 
   def self.find(key, value)
@@ -31,14 +31,14 @@ end
 
 describe "Test mongo db" do
   before(:each) do
-    Revuelog.new("2014-11-28 13:58:33 +0100", "nickname", "Love TDD").to_hash
-    MongodbSpec.dbnew.dbinsert(:revuehash)
+    revuehash = Revuelog.new("2014-11-28 13:58:33 +0100", "nickname", "Love TDD").to_hash
+    MongodbSpec.dbnew.dbinsert(revuehash)
   end
 
   after(:each) do
     MongodbSpec.dbclean
   end
 
-  it { expect(MongodbSpec.find(nick, nickname)).to be true}
+  it { expect(MongodbSpec.find("nick", "nickname")).to be_kind_off(Hash)}
 end
 
