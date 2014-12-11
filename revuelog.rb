@@ -19,7 +19,7 @@ end
 class Revuedb
 
   Host     = ENV['MONGO_RUBY_DRIVER_HOST'] || 'localhost'
-  Port     = ENV['MONGO_RUBY_DRIVER_PORT'] || MongoClient::DEFAULT_PORT
+  Port     = ENV['MONGO_RUBY_DRIVER_PORT'] || '27017'
   Collname = ENV['MONGO_RUBY_DRIVER_COLL'] || 'revue-coll-spec'
 
   def initialize(host=Host, port=Port, collname=Collname)
