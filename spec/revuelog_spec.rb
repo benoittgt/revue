@@ -26,10 +26,10 @@ describe "Test Mongodb" do
   end
 
   after(:each) do
-    Revuedb.dbclean
+    Revuedb.new.dbclean
   end
 
-  it { expect(Revuedb.find("nick", "Paul").first['nick']).to eq('Paul')}
-  it { expect(Revuedb.distinct("nick")).to eq(['Paul','Semia'])}
+  it { expect(Revuedb.new.find("nick", "Paul").first['nick']).to eq('Paul')}
+  it { expect(Revuedb.new.distinct("nick")).to eq(['Paul','Semia'])}
 end
 
