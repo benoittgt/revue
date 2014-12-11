@@ -2,10 +2,6 @@ require 'mongo'
 
 include Mongo
 
-host     = ENV['MONGO_RUBY_DRIVER_HOST'] || 'localhost'
-port     = ENV['MONGO_RUBY_DRIVER_PORT'] || MongoClient::DEFAULT_PORT
-collname = ENV['MONGO_RUBY_DRIVER_COLL'] || 'revue-coll-spec'
-
 class Revuelog
   attr_reader :time, :nick, :message
 
@@ -16,15 +12,18 @@ class Revuelog
   end
 
   def to_hash
-     {"time" => @time, "nick" => @nick, "message" => @message}
+    {"time" => @time, "nick" => @nick, "message" => @message}
   end
 end
 
-class Mongodb
+class Revuedb
 
-  def initialize(host, port, collname)
-    db = MongoClient.new(host,port).db('revue-db')
-    @coll = db[collname]
+  Host     = ENV['MONGO_RUBY_DRIVER_HOST'] || 'localhost'
+  Port     = ENV['MONGO_RUBY_DRIVER_PORT'] || MongoClient::DEFAULT_PORT
+  Collname = ENV['MONGO_RUBY_DRIVER_COLL'] || 'revue-coll-spec'
+
+  def initialize(host=Host, port=Port, collname=Collname)
+    @coll = MongoClient.new(host,port).db('revue-db').collection(collname)
   end
 
   def find(key, value)

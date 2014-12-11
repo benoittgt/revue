@@ -20,16 +20,16 @@ end
 describe "Test Mongodb" do
   before(:each) do
     revuehash = Revuelog.new("2012-11-28 13:58:33 +0100", "Paul", "Love TDD and Paul").to_hash
-    Mongodb.new.dbinsert(revuehash)
+    Revuedb.new.dbinsert(revuehash)
     revuehash2 = Revuelog.new("2014-11-28 16:58:33 +0100", "Semia", "Love TDD !!").to_hash
-    Mongodb.new.dbinsert(revuehash2)
+    Revuedb.new.dbinsert(revuehash2)
   end
 
   after(:each) do
-    MongodbSpec.dbclean
+    Revuedb.dbclean
   end
 
-  it { expect(Mongodb.find("nick", "Paul").first['nick']).to eq('Paul')}
-  it { expect(Mongodb.distinct("nick")).to eq(['Paul','Semia'])}
+  it { expect(Revuedb.find("nick", "Paul").first['nick']).to eq('Paul')}
+  it { expect(Revuedb.distinct("nick")).to eq(['Paul','Semia'])}
 end
 
