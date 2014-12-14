@@ -2,5 +2,5 @@ source 'https://rubygems.org'
 
 gem 'cinch'
 gem 'rspec'
-gem 'mongo'
+gem 'mongo', '1.9.2'
 gem 'bson'
