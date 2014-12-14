@@ -1,2 +1,2 @@
-require './revuelog'
+require './lib/cinch/plugins/revuelog'
 
