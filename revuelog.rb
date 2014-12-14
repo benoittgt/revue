@@ -1,6 +1,6 @@
 require 'mongo'
 
-include Mongo
+
 
 class Revuelog
   attr_reader :time, :nick, :message
@@ -17,6 +17,8 @@ class Revuelog
 end
 
 class Revuedb
+
+include Mongo
 
   Host     = ENV['MONGO_RUBY_DRIVER_HOST'] || 'localhost'
   Port     = ENV['MONGO_RUBY_DRIVER_PORT'] || '27017'
