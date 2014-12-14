@@ -4,9 +4,9 @@ GEM
     bson (1.9.2)
     cinch (2.1.0)
     diff-lcs (1.2.5)
+    dotenv (1.0.2)
     mongo (1.9.2)
       bson (~> 1.9.2)
-    dotenv (1.0.2)
     rspec (3.1.0)
       rspec-core (~> 3.1.0)
       rspec-expectations (~> 3.1.0)
@@ -26,7 +26,6 @@ PLATFORMS
 DEPENDENCIES
   bson
   cinch
-  mongo (= 1.9.2)
   dotenv
-  mongo
+  mongo (= 1.9.2)
   rspec
