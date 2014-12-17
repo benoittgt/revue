@@ -18,18 +18,20 @@ describe "create object from irc message" do
 end
 
 describe "Test Mongodb" do
+  let(:db) { Revuedb.new }
+
   before(:each) do
     revuehash = Revuelog.new("2012-11-28 13:58:33 +0100", "Paul", "Love TDD and Paul").to_hash
-    Revuedb.new.dbinsert(revuehash)
+    db.dbinsert(revuehash)
     revuehash2 = Revuelog.new("2014-11-28 16:58:33 +0100", "Semia", "Love TDD !!").to_hash
-    Revuedb.new.dbinsert(revuehash2)
+    db.dbinsert(revuehash2)
   end
 
   after(:each) do
-    Revuedb.new.dbclean
+    db.dbclean
   end
 
-  it { expect(Revuedb.new.find("nick", "Paul").first['nick']).to eq('Paul')}
-  it { expect(Revuedb.new.distinct("nick")).to eq(['Paul','Semia'])}
+  it { expect(db.find("nick", "Paul").first['nick']).to eq('Paul')}
+  it { expect(db.distinct("nick")).to eq(['Paul','Semia'])}
 end
 
