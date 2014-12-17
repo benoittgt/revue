@@ -34,3 +34,23 @@ describe "Test Mongodb" do
   it { expect(revuedb.distinct("nick")).to eq(['Paul','Semia'])}
 end
 
+describe "Sinatra render json" do
+  let(:revuedb) {Revuedb.new}
+  before(:each) do
+    revuehash = Revuelog.new("2012-11-28 13:58:33 +0100", "Paul", "Love TDD and Paul").to_hash
+    revuedb.dbinsert(revuehash)
+  end
+
+  def app
+    Sinatra::Application
+  end
+
+  after(:each) do
+    revuedb.dbclean
+  end
+
+  it "answer json" do
+    #get '/'
+    expect(last.response).to be_ok
+  end
+end
