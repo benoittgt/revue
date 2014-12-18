@@ -1,9 +1,9 @@
 language: ruby
-
 rvm:
   - 2.1.5
-
 script: bundle exec rspec spec
-
 services:
-  - mongodb
+- mongodb
+notifications:
+  slack:
+    secure: apwNSm/xVsQVaDdSuoHcxNSoXS/f3o3FDxLGdckk/Yw8tqohW+QyEwGsU8PvWLAJc14vJU/90NYr3dBnzpIRsGSK4kcFnWBFE1h5a2WyRgldcuStKQhf8hzFQZ51DGmjTPCSZ2olpJ+BH2YXPGhwPFuyPM1jSqajZZa3CFu5kKM=

@@ -5,6 +5,14 @@ revue
 
 Irc logger bot with api with sinatra.
 
+## To use it
+
+* git clone the repo
+* install mongodb
+* go into the repo
+* `bundle install`
+* start the bot : `ruby revuebot.rb`
+
 ### To Do (with TDD)
 
 * [X] Log with cinch
