@@ -1,7 +1,7 @@
 revue
 =====
 
-[![Build Status](https://travis-ci.org/benoittgt/revue.svg?branch=master)](https://travis-ci.org/benoittgt/revue)
+[![Build Status](https://travis-ci.org/benoittgt/revue.svg?branch=mongo_spec)](https://travis-ci.org/benoittgt/revue)
 
 Irc logger bot with api with sinatra.
 

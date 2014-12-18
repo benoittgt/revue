@@ -1,6 +1,6 @@
 require 'mongo'
-
-include Mongo
+require 'cinch'
+require 'json'
 
 class Revuelog
   attr_reader :time, :nick, :message
@@ -18,6 +18,8 @@ end
 
 class Revuedb
 
+  include Mongo
+
   Host     = ENV['MONGO_RUBY_DRIVER_HOST'] || 'localhost'
   Port     = ENV['MONGO_RUBY_DRIVER_PORT'] || '27017'
   Collname = ENV['MONGO_RUBY_DRIVER_COLL'] || 'revue-coll-spec'
@@ -28,6 +30,10 @@ class Revuedb
 
   def find(key, value)
     @coll.find({key => value}, :fields => [key]).to_a
+  end
+
+  def findlastone
+     @coll.find().sort("_id", -1).limit(1).to_a.to_json
   end
 
   def distinct(key)
@@ -43,4 +49,23 @@ class Revuedb
   end
 end
 
+module Cinch::Plugins
+  class Revue
+    include Cinch::Plugin
 
+
+
+    match /(...)/, use_prefix: false, method: :log
+    def log(m)
+
+      @db = Revuedb.new
+      bot.debug("RevueLog :: New Message : Time is : #{m.time}, nick is #{m.user.nick}, message is #{m.message}")
+      loghash = Revuelog.new(m.time, m.user.nick, m.message).to_hash
+
+      @db.dbinsert(loghash)
+
+      lastentry = @db.findlastone
+      bot.debug("RevueLog :: New database entry : #{lastentry}")
+    end
+  end
+end
