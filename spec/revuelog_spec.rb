@@ -1,4 +1,10 @@
 require './spec/spec_helper'
+require 'rspec'
+require 'rack/test'
+
+RSpec.configure do |conf|
+  conf.include Rack::Test::Methods
+end
 
 describe "create object from irc message" do
   let(:revueobj) { Revuelog.new("2014-11-28 13:58:33 +0100", "nickname", "Love TDD") }
@@ -35,18 +41,28 @@ describe "Test Mongodb" do
 end
 
 describe "Sinatra render json" do
+
+  def app
+    Sinatra::Application
+  end
+
   let(:revuedb) {Revuedb.new}
   before(:each) do
     revuehash = Revuelog.new("2012-11-28 13:58:33 +0100", "Paul", "Love TDD and Paul").to_hash
     revuedb.dbinsert(revuehash)
   end
 
-  after(:each) do
-    revuedb.dbclean
+  #after(:each) do
+  #  revuedb.dbclean
+  #end
+
+  it "answer json to root path" do
+    get '/'
+    expect(last_response).to be_ok
   end
 
-  it "answer json" do
-    get '/'
-    expect(last.response).to be_ok
+  it "answer json to document path" do
+    get '/documents/?'
+    expect(last_response).to_not include("_id") 
   end
 end
