@@ -41,16 +41,12 @@ describe "Sinatra render json" do
     revuedb.dbinsert(revuehash)
   end
 
-  def app
-    Sinatra::Application
-  end
-
   after(:each) do
     revuedb.dbclean
   end
 
   it "answer json" do
-    #get '/'
+    get '/'
     expect(last.response).to be_ok
   end
 end
