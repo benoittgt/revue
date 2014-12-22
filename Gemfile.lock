@@ -2,6 +2,8 @@ GEM
   remote: https://rubygems.org/
   specs:
     bson (1.9.2)
+    bson_ext (1.9.2)
+      bson (~> 1.9.2)
     cinch (2.1.0)
     diff-lcs (1.2.5)
     dotenv (1.0.2)
@@ -36,6 +38,7 @@ PLATFORMS
 
 DEPENDENCIES
   bson
+  bson_ext
   cinch
   dotenv
   json (= 1.8.1)
