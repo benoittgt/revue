@@ -52,10 +52,6 @@ describe "Sinatra render json" do
     revuedb.dbinsert(revuehash)
   end
 
-  #after(:each) do
-  #  revuedb.dbclean
-  #end
-
   it "answer json to root path" do
     get '/'
     expect(last_response).to be_ok
@@ -63,6 +59,6 @@ describe "Sinatra render json" do
 
   it "answer json to document path" do
     get '/documents/?'
-    expect(last_response).to_not include("_id") 
+    expect(last_response).to_not include("_id")
   end
 end
