@@ -1,0 +1,38 @@
+.example {
+  text-align: center;
+}
+
+.chart {
+  position:relative;
+  height:250px;
+  width: 500px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.chart div  {
+  margin: 1px;
+  bottom: 0;
+  position: absolute;
+  display: inline-block;
+  background-color: #767676;
+}
+
+.chart-caption {
+  margin-top: 20px;
+  font: 1.5em sans-serif;
+  color: #404040;
+}
+
+.chart-caption input {
+  padding:3px 5px;
+  font: .8em sans-serif;
+}
+
+.chart-caption .button {
+  border: solid 1px #e0e0e0;
+  background-color: #eee;
+  border-radius: 3px;
+  padding:3px 10px;
+  font-size: .8em
+}
