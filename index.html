@@ -10,16 +10,26 @@
   <body ng-app="revue">
   <div class="container">
     <h1>Revue :: Irc logs</h1>
+    <div ng-controller="MostActiveController">
+      <div class="panel-heading">5 Most active users</div>
+      <div class="panel-body">{{most_active}}</div>
+    </div>
     <div ng-controller="LogsController">
       <input class="form-control" placeholder="...." type="text" ng-model="filterRq">
       </br>
-      <div ng-repeat="log in logs | filter:filterRq" class="panel panel-default">
-        <div class="panel-heading">The {{log.time}}</div>
-        <div class="panel-body">
-          <p>Call : {{log.nickl}}</p>
-          <p>Distance : {{log.message}} kms</p>
-        </div>
-      </div>
+        <table class="table table-striped table-condensed">
+          <tr>
+            <th>Time</th>
+            <th>Nick</th>
+            <th>Message</th>
+          </tr>
+
+          <tr ng-repeat="log in logs | filter:filterRq">
+            <th>{{log.time}}</th>
+            <th>{{log.nick}}</th>
+            <th>{{log.message}}</th>
+          </tr>
+        </table>
     </div>
   </div>
   </body>
