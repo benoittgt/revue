@@ -1,6 +1,5 @@
 require 'cinch'
 #require './revuelog'
-require 'pry'
 require_relative "lib/cinch/plugins/revuelog"
 
 bot = Cinch::Bot.new do
