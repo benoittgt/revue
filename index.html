@@ -14,16 +14,10 @@
   <div class="container">
     <h1>Revue :: Irc logs</h1>
 
-    <div ng-controller="mainController">
-    <div class='example'>
+    <div ng-controller="MostActiveController">
         <div class='chart'></div>
     </div>
-
-
-    <div ng-controller="MostActiveController">
-      <div class="panel-heading">5 Most active users</div>
-      <div class="panel-body">{{most_active}}</div>
-    </div>
+    </br>
     <div ng-controller="LogsController">
       <input class="form-control" placeholder="...." type="text" ng-model="filterRq">
       </br>
