@@ -5,7 +5,7 @@ revue
 
 Irc logger bot with api with sinatra.
 
-[![Screenshot](https://i.imgur.com/5KDKoHP.png)
+[![Screenshot](https://i.imgur.com/5KDKoHP.png)]
 
 ## To use it
 
