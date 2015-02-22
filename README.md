@@ -5,6 +5,8 @@ revue
 
 Irc logger bot with api with sinatra.
 
+![Screenshot](https://i.imgur.com/5KDKoHP.png)
+
 ## To use it
 
 * git clone the repo
@@ -12,14 +14,17 @@ Irc logger bot with api with sinatra.
 * go into the repo
 * `bundle install`
 * start the bot : `ruby revuebot.rb`
+* start the server : `ruby webserver.rb`
 
 ### To Do (with TDD)
 
 * [X] Log with cinch
 * [X] Plug Mongodb
 * [X] Enable cinch [loggin](https://github.com/cinchrb/cinch/blob/48ea90d25f0d46ca4c4aba8fe1934e5cc6210a5e/docs/logging.md)
-* [ ] Build API with Sinatra
-* [ ] Nice front with base.io or foundation with some D3.js
+* [X] Build API with Sinatra
+* [X] Nice front with base.io or foundation with some D3.js
+* [ ] Work on perf, indexing
+* [ ] add D3.js tip
 
 ### Licence
 

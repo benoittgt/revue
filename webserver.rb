@@ -16,17 +16,30 @@ configure do
 end
 
 get '/' do
-  content_type :json
-  settings.mongo_db.collection_names.to_json
+  send_file 'index.html'
 end
 
-get '/documents/?' do
+get '/logs' do
   content_type :json
-  settings.mongo_db['revue-coll-spec'].find(nil, :fields => {
+  settings.mongo_db[Collname].find(nil, :fields => {
     :time => true,
     :nick => true,
     :message => true,
     :_id => false
-  }).to_a.to_json
+  }).limit(150).sort( { _id: -1 }).to_a.to_json
+end
+
+get '/most_active' do
+  content_type :json
+  group ={"$group" => { "_id" => "$nick", "value" => {"$sum" => 1} }}
+  sort = {"$sort" => {"value" => -1}}
+  limit = {"$limit" => 15}
+
+  settings.mongo_db[Collname].aggregate([group,sort,limit]).to_json
+end
+
+not_found do
+  content_type :json
+  halt 404, { error: 'URL not found' }.to_json
 end
 

@@ -1,0 +1,57 @@
+.chart {
+  position:relative;
+  height:250px;
+  width: 500px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.chart div {
+  background-color: steelblue;
+  text-align: right;
+  padding: 3px;
+  margin: 1px;
+  color: white;
+  margin: 1px;
+  bottom: 0;
+  bottom: 0;
+  position: absolute;
+  display: inline-block;
+}
+
+.chat text {
+  fill: white;
+  font: 8px sans-serif;
+  text-anchor: middle;
+}
+
+.chart div:hover {
+  background-color: brown;
+}
+
+.d3-tip {
+  line-height: 1;
+  font-weight: bold;
+  padding: 12px;
+  background: rgba(0, 0, 0, 0.8);
+  color: #fff;
+  border-radius: 2px;
+}
+
+.d3-tip:after {
+  box-sizing: border-box;
+  display: inline;
+  font-size: 10px;
+  width: 100%;
+  line-height: 1;
+  color: rgba(0, 0, 0, 0.8);
+  content: "\25BC";
+  position: absolute;
+  text-align: center;
+}
+
+.d3-tip.n:after {
+  margin: -1px 0 0 0;
+  top: 100%;
+  left: 0;
+}
