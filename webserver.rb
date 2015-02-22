@@ -16,11 +16,10 @@ configure do
 end
 
 get '/' do
-  content_type :json
-  settings.mongo_db.collection_names.to_json
+  send_file 'index.html'
 end
 
-get '/documents/?' do
+get '/logs' do
   content_type :json
   settings.mongo_db['revue-coll-spec'].find(nil, :fields => {
     :time => true,
@@ -28,5 +27,10 @@ get '/documents/?' do
     :message => true,
     :_id => false
   }).to_a.to_json
+end
+
+not_found do
+  content_type :json
+  halt 404, { error: 'URL not found' }.to_json
 end
 

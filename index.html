@@ -1,0 +1,27 @@
+<!doctype html>
+<html>
+  <head>
+  <meta charset="utf-8">
+    <title>My Angular App</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0/angular.min.js"></script>
+    <script src="app.js"></script>
+  </head>
+  <body ng-app="logsRadio">
+  <div class="container">
+    <h1>CQ logs</h1>
+    <div ng-controller="LogsController">
+      <input class="form-control" placeholder="...." type="text" ng-model="filterRq">
+      </br>
+      <div ng-repeat="cqlog in logs | filter:filterRq | orderBy:'-distance' | limitTo:20" class="panel panel-default">
+        <div class="panel-heading">The {{cqlog.date}} at {{cqlog.time}}</div>
+        <div class="panel-body">
+          <p>Call : {{cqlog.idcall}}</p>
+          <p>Distance : {{cqlog.distance}} kms</p>
+          <p>Frequency : {{cqlog.freq}} Hz</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  </body>
+</html>
