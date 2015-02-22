@@ -21,12 +21,19 @@ end
 
 get '/logs' do
   content_type :json
-  settings.mongo_db['revue-coll-spec'].find(nil, :fields => {
+  settings.mongo_db[Collname].find(nil, :fields => {
     :time => true,
     :nick => true,
     :message => true,
     :_id => false
-  }).to_a.to_json
+  }).limit(300).to_a.to_json
+end
+
+get '/most_active' do
+  content_type :json
+  group ={"$group" => { "_id" => "$nick", "value" => {"$sum" => 1} }}
+  sort = {"$sort" => {"value" => -1}}, {"$limit" => 5}
+  settings.mongo_db[Collname].aggregate([group,sort]).to_json
 end
 
 not_found do
