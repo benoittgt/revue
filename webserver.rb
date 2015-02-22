@@ -26,14 +26,14 @@ get '/logs' do
     :nick => true,
     :message => true,
     :_id => false
-  }).limit(300).sort( { _id: -1 }).to_a.to_json
+  }).limit(150).sort( { _id: -1 }).to_a.to_json
 end
 
 get '/most_active' do
   content_type :json
   group ={"$group" => { "_id" => "$nick", "value" => {"$sum" => 1} }}
   sort = {"$sort" => {"value" => -1}}
-  limit = {"$limit" => 5}
+  limit = {"$limit" => 15}
 
   settings.mongo_db[Collname].aggregate([group,sort,limit]).to_json
 end

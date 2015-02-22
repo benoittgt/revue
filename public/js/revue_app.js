@@ -32,13 +32,12 @@
 
   app.controller('MostActiveController', function($scope, $http){
 
-    var chart_width = 500;
-    var chart_height = 250;
+    var chart_width = 940;
+    var chart_height = 450;
     $scope.most_active = [];
 
     $http.get('/most_active')
     .success(function(data) {
-      console.log("from sucess : " + data[0].value);
       $scope.most_active = data;
       $scope.updateChart();
     });
@@ -46,7 +45,8 @@
     $scope.updateChart = function() {
       var index = 0;
       var data = angular.fromJson($scope.most_active);
-      var bar_width = 500 / (data.length); 
+      var bar_width = 680 / (data.length);
+
 
       d3.selectAll('.chart').selectAll('div').remove();
 
@@ -54,8 +54,9 @@
           .selectAll("div")
           .data(data)
           .enter().append("div")
+          .text(function(d) { console.log(d._id); return d._id; })
           .style("width", function(d) { return bar_width + "px"; })
-          .style("height", function(d) { return d.value + "%"; })
+          .style("height", function(d) { return d.value/2 + "%"; })
           .style("right", function(d) { return (index++) * (bar_width + 2) + "px"; });
     }
 
