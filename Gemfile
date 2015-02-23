@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 gem 'cinch'
-gem 'mongo', '1.9.2'
+gem 'mongo', '1.12.0'
 gem 'bson'
 gem 'dotenv'
 gem 'sinatra'
