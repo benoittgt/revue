@@ -10,7 +10,7 @@ Irc logger bot with api with sinatra.
 ## To use it
 
 * git clone the repo
-* install mongodb
+* install mongodb (version 2.6.*)
 * go into the repo
 * `bundle install`
 * start the bot : `ruby revuebot.rb`
