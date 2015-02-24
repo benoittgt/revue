@@ -26,7 +26,7 @@ get '/logs' do
     :nick => true,
     :message => true,
     :_id => false
-  }).limit(150).sort( { _id: -1 }).to_a.to_json
+  }).limit(150).sort({ _id: -1 }).to_a.to_json
 end
 
 get '/most_active' do

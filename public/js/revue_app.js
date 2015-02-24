@@ -9,9 +9,9 @@
       $scope.logs = data;
     })
 
-    .error(function(data) {
-      console.log("Error when getting the json at /logs");
-    });
+  .error(function(data) {
+    console.log("Error when getting the json at /logs");
+  });
   });
   app.controller('MostActiveController', function($scope, $http){
     $scope.most_active = [];
@@ -22,9 +22,9 @@
       $scope.most_active = data;
     })
 
-    .error(function(data) {
-      console.log("Error when getting the json at /most_active");
-    });
+  .error(function(data) {
+    console.log("Error when getting the json at /most_active");
+  });
 
   });
 
