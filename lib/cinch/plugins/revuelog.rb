@@ -52,19 +52,14 @@ end
 module Cinch::Plugins
   class Revue
     include Cinch::Plugin
-
-
-
     match /(...)/, use_prefix: false, method: :log
     def log(m)
 
-      @db = Revuedb.new
+      db = Revuedb.new
       bot.debug("RevueLog :: New Message : Time is : #{m.time}, nick is #{m.user.nick}, message is #{m.message}")
       loghash = Revuelog.new(m.time, m.user.nick, m.message).to_hash
-
-      @db.dbinsert(loghash)
-
-      lastentry = @db.findlastone
+      db.dbinsert(loghash)
+      lastentry = db.findlastone
       bot.debug("RevueLog :: New database entry : #{lastentry}")
     end
   end
